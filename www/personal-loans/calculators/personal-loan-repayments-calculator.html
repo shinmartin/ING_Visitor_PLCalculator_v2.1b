@@ -1508,16 +1508,21 @@
 												and <span id="maxTerm"></span> years
 											</p>
 											<div class="rating-dropdown">
-												<p class="field-label with-icon">Estimate your credit rating <img
-														src="../../img/icon_info-grey.svg" alt="Info Icon" href="#creditScore"
-														data-toggle="modal" /></p>
+												<p class="field-label with-icon">Fixed interest rate <span class="popover-question popover-style icon-instruction" data-container="body" data-placement="auto" data-toggle="popover" data-trigger="hover" data-content="<span class='popover-close'></span> The ING Personal Loan rate of 6.99% p.a. (comparison rate 7.13% p.a.) is available for all new applications that are received between 1 March 2022 and 31 March 2022. Applications can be cancelled at any time or expire. Any applications received after 31 March 2022 will be subject to the rates advertised at that time. This offer is not available for refinances of existing ING Personal Loans."></span></p>
+
+												<input type="text" value="6.99% p.a." class="form-field form-control currency-validate disabled" readonly disabled style="background-color:#eee" />
+
+												<p class="comp-rate-info">Comparison rate: 7.13% p.a. <span class="popover-question popover-style icon-instruction" data-container="body" data-placement="auto" data-toggle="popover" data-trigger="hover" data-content="<span class='popover-close'></span> The comparison rate for the ING Personal Loan is based on an unsecured loan of $30,000 over a loan term of 5 years. <strong>WARNING:</strong> This comparison rate applies only to the example or examples given. Different amounts and terms will result in different comparison rates. Costs such as redraw fees or early repayment fees, and cost savings such as fee waivers, are not included in the comparison rate but may influence the cost of the loan."></span></p>
+
+												<!--
+												<p class="field-label with-icon">Estimate your credit rating <img src="../../img/icon_info-grey.svg" alt="Info Icon" href="#creditScore" data-toggle="modal" /></p>
+
 												<div class="dropdown form-field">
 													<button id="rating"
 														class="btn btn-dropdown-orange btn-block dropdown-toggle symbol-right text-left "
 														data-toggle="dropdown">Please select</button>
 													<span class="button-symbol"><span class="caret"></span></span>
 													<ul id="rating-value" class="dropdown-menu" name="loan-rate" aria-labelledby="drop3">
-														<!-- <li><a href="javascript:;" class="dropdown-option" data-value="X.XX">Description - X.XX%</a></li> -->
 													</ul>
 												</div>
 
@@ -1525,6 +1530,7 @@
 													<span class="popover-question popover-style icon-instruction" data-container="body" data-placement="auto" data-toggle="popover" data-trigger="hover" data-content="<span class='popover-close'></span> The comparison rate for the ING Personal Loan is based on an unsecured loan of $30,000 over a loan term of 5 years. <strong>WARNING:</strong> This comparison rate applies only to the example or examples given. Different amounts and terms will result in different comparison rates. Costs such as redraw fees or early repayment fees, and cost savings such as fee waivers, are not included in the comparison rate but may influence the cost of the loan."></span>
 													Comparison rate: <span class="rate"></span>% p.a.
 												</p>
+												-->
 											</div>
 											<div class="frequency-dropdown">
 												<p class="field-label">Payment Frequency</p>
@@ -1552,8 +1558,9 @@
 												give you your personalised rate.
 												From here you can decide if you want to continue with your application.</p>
 											<a href="#applyNow" class="apply-button ING-button blue" data-toggle="modal"
-												aria-role="button">Get
-												my rate &amp; apply</a>
+												aria-role="button">Apply now</a>
+
+												<!-- Get my rate & apply -->
 										</div>
 									</div>
 								</div>
@@ -1871,7 +1878,7 @@
 	<script src="/js/InterestRateManager.js?mod=14072014"></script>
 
 	<script src="/js/pl-interest-rates.js"></script>
-	<script src="/js/pl-visitor-repay-calculator-2.1.js"></script>
+	<script src="/js/pl-visitor-repay-calculator-2.1b.js"></script>
 
 	<script type="text/javascript">_satellite.pageBottom();</script>
 
