@@ -1,0 +1,350 @@
+.ING-tab-header .tab-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ING-tab-header .tab-list.column-5 > li {
+  width: auto;
+  border-bottom: 5px solid #fff;
+  padding: 15px 5px;
+}
+
+.ING-tab-header .tab-list.column-5 > li.active {
+  border-color: #f60;
+}
+
+.ING-tab-header .orange-bar {
+  display: none;
+}
+
+#rateList {
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 20px;
+  width: 82%;
+  margin-top: -20px;
+  margin-right: 10%;
+  float: right;
+}
+
+#rateLabel span {
+  width: 55%;
+  float: left;
+  font-size: 16px;
+  line-height: 16px;
+  padding-bottom: 7px;
+}
+
+#rateLabel span:nth-child(2n) {
+  width: 45%;
+}
+
+.rateRow {
+  clear: both;
+}
+
+.fixedRate {
+  padding-bottom: 15px;
+}
+
+.rates {
+  font-size: 33px;
+  color: #f60;
+  float: left;
+}
+.rates:first-child {
+  background: url(../img/img-pl-rate-divider.png) no-repeat right center;
+  width: 50%;
+  margin-right: 5%;
+}
+.rates:nth-child(2n) {
+  width: 45%;
+}
+
+.rates span.per {
+  font-size: 14px;
+  width: 20px;
+  display: inline-block;
+  line-height: 14px;
+}
+
+.rateTitle {
+  clear: both;
+  padding-top: 5px;
+}
+
+.field-label img {
+  display: inline-block;
+}
+
+.rateTitle img {
+  float: left;
+  margin-top: 5px;
+  margin-right: 2px;
+  width: 12px;
+}
+
+#repayments-calc-new .calc-section p.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: -30px;
+  margin-bottom: 12px;
+  display: none;
+}
+
+.dropdown {
+  position: relative;
+}
+.dropdown .btn {
+  height: 50px;
+  padding: 12px 20px;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s;
+}
+.dropdown .btn.btn-dropdown-orange {
+  border-color: #dbdbdb;
+}
+.dropdown .btn.btn-dropdown-orange:hover {
+  border-color: #ff6600;
+}
+.dropdown .btn.btn-block {
+  display: block;
+  width: 100%;
+}
+.dropdown .btn.symbol-right:after {
+  content: "";
+  position: absolute;
+  top: 23px;
+  right: 20px;
+  border-top: 4px dashed;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+.dropdown .dropdown-menu > li > a {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555555;
+}
+.dropdown .dropdown-menu > li > a:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+#content-calculator h2 {
+  color: #f60;
+  line-height: 43px;
+  margin-bottom: 30px;
+}
+
+.repayments-calc .content-module {
+  padding: 30px;
+}
+
+@media (max-width: 767px) {
+  #content-calculator h2 {
+    color: #333;
+    line-height: 32px;
+  }
+  .repayments-calc .content-module {
+    padding: 30px 0 0;
+  }
+  #rateList {
+    margin: 0 auto;
+    width: 95%;
+    padding: 0;
+    float: none;
+  }
+
+  .rates {
+    font-size: 45px;
+  }
+
+  .calc-section {
+    width: 100%;
+    float: none;
+  }
+
+  .estimate-section {
+    width: 100%;
+    border-radius: 4px;
+    background-color: #e7f2f9;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .rating-dropdown,
+  .frequency-dropdown {
+    width: 100%;
+    float: none;
+    padding: 0;
+    margin-bottom: 32px;
+  }
+}
+
+@media (min-width: 768px) {
+  #rateList {
+    width: 82%;
+    margin-top: -20px;
+    margin-right: 10%;
+  }
+
+  .calc-section {
+    width: 53%;
+    float: left;
+    padding-right: 30px;
+  }
+
+  .estimate-section {
+    width: 47%;
+    float: left;
+    border-radius: 4px;
+    background-color: #e7f2f9;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .rating-dropdown {
+    margin-bottom: 32px;
+  }
+}
+
+@media (min-width: 980px) {
+  #rateList {
+    width: 66%;
+    margin-top: -20px;
+    margin-right: 10%;
+  }
+
+  .rating-dropdown,
+  .frequency-dropdown {
+    width: 50%;
+    float: left;
+    margin-bottom: 0;
+  }
+
+  .rating-dropdown {
+    padding-right: 15px;
+  }
+
+  .frequency-dropdown {
+    padding-left: 15px;
+  }
+  #repayments-calc-new .calc-section .field-label.with-icon {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #rateList {
+    width: 58%;
+    margin-top: -20px;
+    margin-right: 10%;
+  }
+  #repayments-calc-new .calc-section .field-label.with-icon {
+    font-size: 16px;
+  }
+}
+
+.estimate-section h5 {
+  font: normal 20px/25px "ING Me Web Regular";
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.estimate-section .apply-button {
+  width: 100%;
+  border-radius: 5px;
+  line-height: 30px;
+}
+
+.content-module .estimate-section p {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+.repayment .repay-amount {
+  font-size: 38px;
+  line-height: 48px;
+}
+.repayment .symbol-dollar {
+  font-size: 16px;
+  vertical-align: top;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+#repayments-calc-new .calc-section .field-label {
+  margin-bottom: 3px;
+  font-size: 16px;
+  color: #333;
+}
+
+.field-label span {
+  font-size: 14px;
+  color: #696969;
+}
+
+.repay-input {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 32px;
+}
+
+.repay-input:focus,
+.repay-input:hover {
+  border: 1px solid #ff6600;
+  outline: 0;
+}
+
+.calc-section input {
+  outline: none;
+}
+
+.calc-section input[type="button"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  background-color: white;
+}
+
+.calc-section input::-webkit-outer-spin-button,
+.calc-section input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.calc-section input[type="number"] {
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+}
+
+.repay-input .button-minus,
+.repay-input .button-plus {
+  padding: 5px;
+  border: 0 none;
+  line-height: 16px;
+  font-size: 24px;
+}
+
+.amount-field,
+.term-field {
+  width: 80%;
+  text-align: center;
+  border: 0 none;
+  font-size: 18px;
+}
+
+.term-field {
+  background: url(/img/img-txt-years.png) no-repeat center 10px;
+  text-indent: -65px;
+}
