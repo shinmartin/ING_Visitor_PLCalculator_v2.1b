@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Personal Loan Borrowing Power Calculator - ING</title>
+	<meta name="description" content="Find out how much you can borrow with ING's Personal Loan borrowing calculator.">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="cleartype" content="on">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+	<meta name="keywords" content="products: Personal loans; categories: tools; keywords: Borrowing Power Calculator" />
+
+	<!-- Open Graph data -->
+	<meta property="og:title" content="Personal Loan Borrowing Power Calculator" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://www.ing.com.au/personal-loans/calculators/personal-loan-borrowing-power-calculator.html" />
+	<meta property="og:image" content="http://www.ing.com.au/img/etc/social-icon.png" />
+	<meta property="og:description" content="Find out how much you can borrow with ING's Personal Loan borrowing calculator." />
+
+	<link rel="shortcut icon" href="/ico/favicon.png"/>
+	<!-- Shortcut icon for iOS -->
+	<link rel="apple-touch-icon" href="/ico/57.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/ico/72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/ico/114.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/ico/144.png">
+	<!-- Tile icon for Win8 (144x144 + tile color) -->
+	<meta name="msapplication-TileImage" content="/ico/144.png">
+	<meta name="msapplication-TileColor" content="#ff6600">
+	<script src="/js/webcomponents-lite.js"></script>
+	<link rel="import" href="/elements/ing-invite-joint-applicant/ing-invite-joint-applicant-modal.html">
+	
+	<link rel="stylesheet" href="/css/ING-style-2.5.min.css">
+	<link rel="stylesheet" href="/css/ING-pl-calculator.min.css">
+
+	<style>
+	.important-information .disclaimer{margin-bottom: 20px;}
+	/* popover fix */
+	.popover.top .arrow {bottom:-10px;}.popover-question {font-size:13px; margin-right:5px;}.popover-content{font-size:12px;}.popover-close{font-size:12px;top:5px!important;right:5px;}.popover-warning {font-size:12px; text-decoration:underline; color:#525199;}.popover-warning:hover{color:#39396b;}
+	@media (max-width:767px){.popover{display:block!important;}}
+	</style>
+
+	<script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+	<script src="//assets.adobedtm.com/3e3d635ebccc/1e5125844228/launch-262ee225239e.min.js"></script>
+</head>
+
+
+<body ng-app="ING-App" class="side-faq-style">
+<!--[if lte IE 9]>
+<div class="oldie">
+	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+</div>
+<![endif]-->
+
+
+
+
+
+<div class="mobile-side-wrapper">
+	<div class="mobile-side-slider">
+
+
+		<div id="mobile-search" class="mobile-search" style="display: none;">
+			<div class="container">
+				<div class="search-container header-style" ng-controller="NewSearchController" ng-init="init();">
+					<input type="text" name="term" autocomplete="off" ng-model="searchInfo.selected" placeholder="Ask a question..." uib-typeahead="suggestion for suggestion in refreshSuggestionListEx($viewValue)" typeahead-loading="loadingSearch" class="search-control" typeahead-on-select="gotoSearchPage()">
+					<i class="typeahead-search-icon icon-font icon-search" ng-click="gotoSearchPage();"></i>
+				</div>
+			</div>
+		</div>
+
+
+		<section class="ING-body">
+			
+
+			<article class="ING-content no-gradient small-margin-top ">
+				<div class="container">
+					<div class="content-container main-title-box">
+						<h1>Personal loan borrowing power calculator</h1>
+						<p>The amount you may be able to borrow is determined by your financial situation. This is largely made up of your income, your financial commitments, current savings and your credit history. You'll also need to consider your spending habits and any existing commitments such as personal or car loans, credit card debt, even travel expenses. Work out how much you may be able to borrow with ING Personal Loan by using our borrowing power calculator.
+						</p>
+					</div>
+					<div class="content-container bpc-container">
+						<div class="content-module block-center">
+							<div id="BorrowingPowerCalc" class="pl-calculator content-container border-box">
+								<div class="content-module collapse-module white-style" style="position:relative;overflow:hidden;">
+									<div class="api-loader hide">
+										<div class="loader-spinner">Loading</div>
+									</div>
+									<div class="calc-section">
+										<div class="grid-container grid-custom">
+											<div class="grid-12-cell template-margin">
+												<h4>About you</h4>
+											</div>
+											<!-- <div class="grid-fixed-cell sm-half">
+											<p>Relationship status:</p>
+											<div class="dropdown form-field">
+												<button id="drop1" class="btn btn-dropdown-orange btn-block dropdown-toggle symbol-right text-left" data-toggle="dropdown">Single</button>
+												<span class="button-symbol"><span class="caret"></span></span>
+												<ul class="dropdown-menu" name="relationship-status" aria-labelledby="drop1">
+													<li>
+														<a href="javascript:;" class="dropdown-option" data-value="s">Single</a>
+													</li>
+													<li>
+														<a href="javascript:;" class="dropdown-option" data-value="c">Couple</a>
+													</li>
+												</ul>
+											</div>
+										</div> -->
+											<div class="grid-fixed-cell sm-half">
+												<p>Dependents:</p>
+												<input type="text" class="form-field form-control number-validate" name="dependents" value="0"
+													data-digits="2" />
+											</div>
+											<div class="grid-fixed-cell sm-half">
+												<p>Postcode:</p>
+												<input type="text" class="form-field form-control postcode-validate" name="postcode" value=""
+													data-digits="4" />
+											</div>
+											<div class="grid-12-cell">
+												<hr />
+											</div>
+										</div>
+
+										<div class="grid-container grid-custom">
+											<div class="grid-fixed-cell template-margin">
+												<div class="grid-container">
+													<div class="grid-12-cell">
+														<h4>Your income</h4>
+													</div>
+													<div class="grid-fixed-cell sm-half md-full">
+														<p>Gross monthly salary:</p>
+														<input type="text" class="form-field form-control currency-validate"
+															name="gross-salary" />
+													</div>
+													<div class="grid-fixed-cell sm-half md-full">
+														<p>Other monthly income:</p>
+														<input type="text" class="form-field form-control currency-validate"
+															name="other-income" />
+													</div>
+												</div>
+											</div>
+											<div class="grid-spacing-cell">&nbsp;</div>
+											<div class="grid-fixed-double-cell template-margin">
+												<div class="grid-container">
+													<div class="grid-12-cell">
+														<h4>Your monthly expenses</h4>
+													</div>
+													<div class="grid-6-cell">
+														<p>Living expenses:</p>
+														<input type="text" class="form-field form-control currency-validate"
+															name="living-expenses" />
+													</div>
+													<div class="grid-6-cell">
+														<p>Rent / Mortgage repayments:</p>
+														<input type="text" class="form-field form-control currency-validate"
+															name="rent-mortgage" />
+													</div>
+												</div>
+												<div class="grid-container">
+													<div class="grid-6-cell">
+														<p>Total other loan repayments: <span
+																class="popover-question popover-style icon-instruction" data-container="body"
+																data-placement="auto" data-toggle="popover" data-trigger="hover"
+																data-content="<span class='popover-close'></span> This includes any debts you plan to consolidate (if applicable)"></span>
+														</p>
+														<input type="text" class="form-field form-control currency-validate" name="other-loans" />
+													</div>
+													<div class="grid-6-cell">
+														<p>Total credit card limit: <span class="popover-question popover-style icon-instruction"
+																data-container="body" data-placement="auto" data-toggle="popover" data-trigger="hover"
+																data-content="<span class='popover-close'></span> This includes the credit limits of any credit cards you plan to consolidate (if applicable)"></span>
+														</p>
+														<input type="text" class="form-field form-control currency-validate"
+															name="credit-limit" />
+													</div>
+												</div>
+											</div>
+											<div class="grid-12-cell">
+												<hr />
+											</div>
+										</div>
+
+
+										<div class="grid-container grid-custom">
+											<div class="_grid-fixed-double-cell grid-fixed-double-cell-half template-margin">
+												<div class="grid-container">
+													<div class="grid-12-cell">
+														<h4>Debt consolidation <span class="small" style="font-weight:none">(if applicable)</span>
+															<span class="popover-question popover-style icon-instruction" data-container="body"
+																data-placement="auto" data-toggle="popover" data-trigger="hover"
+																data-content="<span class='popover-close'></span> This section only applies if you wish to consolidate your existing debts into an ING Personal Loan"></span>
+														</h4>
+													</div>
+													<div class="grid-6-cell">
+														<p>Other loan limit <br class="from-md" />to consolidate: <span
+																class="popover-question popover-style icon-instruction" data-container="body"
+																data-placement="auto" data-toggle="popover" data-trigger="hover"
+																data-content="<span class='popover-close'></span> Enter the available limit of your loans you are consolidating, including current balance outstanding and any available redraw"
+																name="loan-limit-consol" /></span></p>
+														<input type="text" class="form-field form-control currency-validate"
+															name="loan-limit-consol" />
+													</div>
+													<div class="grid-6-cell">
+														<p>Credit card limit <br class="from-md" />to consolidate: <span
+																class="popover-question popover-style icon-instruction" data-container="body"
+																data-placement="auto" data-toggle="popover" data-trigger="hover"
+																data-content="<span class='popover-close'></span> Enter the total limit of the credit cards you are consolidating"></span>
+														</p>
+														<input type="text" class="form-field form-control currency-validate"
+															name="card-limit-consol" />
+													</div>
+												</div>
+											</div>
+
+											<div class="_grid-fixed-double-cell grid-fixed-double-cell-half template-margin">
+												<div class="grid-container">
+													<div class="grid-12-cell">
+														<h4>About loan</h4>
+													</div>
+													<div class="grid-6-cell">
+															<p><br class="from-md" />Fixed interest rate: <span class="popover-question popover-style icon-instruction" data-container="body" data-placement="auto" data-toggle="popover" data-trigger="hover" data-content="<span class='popover-close'></span> The ING Personal Loan rate of 6.99% p.a. (comparison rate 7.13% p.a.) is available for all new applications that are received between 1 March 2022 and 31 March 2022. Applications can be cancelled at any time or expire. Any applications received after 31 March 2022 will be subject to the rates advertised at that time. This offer is not available for refinances of existing ING Personal Loans."></span></p>
+
+															<input type="text" value="6.99% p.a." class="form-field form-control currency-validate disabled" readonly disabled style="background-color:#eee" />
+
+															<p class="_small">Comparison rate: 7.13% p.a. <span class="popover-question popover-style icon-instruction" data-container="body" data-placement="auto" data-toggle="popover" data-trigger="hover" data-content="<span class='popover-close'></span> The comparison rate for the ING Personal Loan is based on an unsecured loan of $30,000 over a loan term of 5 years. <strong>WARNING:</strong> This comparison rate applies only to the example or examples given. Different amounts and terms will result in different comparison rates. Costs such as redraw fees or early repayment fees, and cost savings such as fee waivers, are not included in the comparison rate but may influence the cost of the loan."></span></p>
+															
+															<!--
+															<p>Estimate your <br class="from-md" />credit rating: <span class="popover-question popover-style icon-instruction" data-container="body" data-placement="auto" data-toggle="popover" data-trigger="hover" data-content="<span class='popover-close'></span> Tell us what you think your credit score may be and we can estimate your interest rate. You can get an idea of your credit score online, for example by visiting <a href='https://www.getcreditscore.com.au' target='_blank' rel='noopener'>www.getcreditscore.com.au</a>."></span></p>
+
+															<div class="dropdown form-field">
+																<button id="drop3"
+																	class="btn btn-dropdown-orange btn-block dropdown-toggle symbol-right text-left"
+																	data-toggle="dropdown">Please select</button>
+																<span class="button-symbol"><span class="caret"></span></span>
+																<ul id="rating-value" class="dropdown-menu" name="loan-rate" aria-labelledby="drop3">
+																</ul>
+															</div>
+
+															<p class="comp-rate-info hide" id="rating-comp-value" style="margin-top:4px;">
+																<span class="popover-question popover-style icon-instruction" data-container="body" data-placement="auto" data-toggle="popover" data-trigger="hover" data-content="<span class='popover-close'></span> The comparison rate for the ING Personal Loan is based on an unsecured loan of $30,000 over a loan term of 5 years. <strong>WARNING:</strong> This comparison rate applies only to the example or examples given. Different amounts and terms will result in different comparison rates. Costs such as redraw fees or early repayment fees, and cost savings such as fee waivers, are not included in the comparison rate but may influence the cost of the loan."></span>
+																Comparison rate: <span class="rate"></span>% p.a.
+															</p>
+															-->
+													</div>
+													<div class="grid-6-cell">
+														<p><br class="from-md" />Loan term:</p>
+														<div class="dropdown form-field">
+															<button id="drop2"
+																class="btn btn-dropdown-orange btn-block dropdown-toggle symbol-right text-left"
+																data-toggle="dropdown">Please select</button>
+															<span class="button-symbol"><span class="caret"></span></span>
+															<ul class="dropdown-menu" name="loan-term" aria-labelledby="drop2"
+																id="BorrowLoanTermDropdown">
+																<li><a href="javascript:;" class="dropdown-option" data-value="2">2 years</a></li>
+																<li><a href="javascript:;" class="dropdown-option" data-value="3">3 years</a></li>
+																<li><a href="javascript:;" class="dropdown-option" data-value="4">4 years</a></li>
+																<li><a href="javascript:;" class="dropdown-option" data-value="5">5 years</a></li>
+																<!-- <li><a href="javascript:;" class="dropdown-option" data-value="6">6 years</a></li>
+																<li><a href="javascript:;" class="dropdown-option" data-value="7">7 years</a></li> -->
+															</ul>
+														</div>
+														<div class="popover fade fixed" id="BorrowLoanTermDropdownError">
+															<div class="arrow"></div>
+															<div class="popover-content">
+																<p class="tiny mt0">Oops, 6 and 7 year repayment terms are only available for loans over $30,000.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="grid-container grid-custom mt-20">
+											<div class="grid-12-cell">
+												<div class="blue-box">
+													<div class="grid-container results-container">
+														<div class="grid-6-cell calc-border-bottom mt-20">
+															<div class="icon-cell">
+																<img src="/img/PL/ICN-PL.png">
+															</div>
+															<div class="text-cell border-right mb-20">
+																<h5>Estimated borrowing power</h5>
+
+																<div id="BorrowingPower">
+																	<p class="total-amount">$<span id="borrowing-power">-</span></p>
+																	<p>(rounded down to nearest $500)</p>
+																</div>
+
+																<div class="wanring-message-box hide" id="BorrowingPowerErrorMessage">
+																	<p class="tiny-small">Sorry, we're unable to consider a loan application based on
+																		the details entered.</p>
+																</div>
+															</div>
+														</div>
+														<div class="grid-6-cell mt-20 mb-20">
+															<div class="icon-cell">
+																<img src="/img/PL/ICN-pay-off-faster.png">
+															</div>
+															<div class="text-cell">
+																<h5>Estimated monthly repayments</h5>
+
+																<div id="MonthlyRepayment">
+																	<p class="total-amount">$<span id="monthly-repayments">-</span></p>
+																	<p>(based on estimated borrowing power)</p>
+																	<!-- <span style="display:none;"
+																		class="rate_FIXED_PERSONAL_LOAN_InterestRate">10.99</span> -->
+																	<p class="small" style="margin-bottom:0">Fixed interest rate: <span id="PLB-SelectedFixedRate">-</span>% p.a.</p>
+																	<p class="small" style="margin-bottom:0">Comparison rate: <span id="PLB-SelectedFixedComparisonRate">-</span>% p.a. (<span
+																		class="popover-warning popover-style" data-container="body"
+																		data-placement="auto" data-toggle="popover" data-trigger="hover"
+																		data-content="<span class='popover-close'></span> The comparison rate for the ING Personal Loan is based on an unsecured loan of $30,000 over a loan term of 5 years. <strong>WARNING:</strong> This comparison rate applies only to the example or examples given. Different amounts and terms will result in different comparison rates. Costs such as redraw fees or early repayment fees, and cost savings such as fee waivers, are not included in the comparison rate but may influence the cost of the loan.">Warning</span>.)
+																	</p>
+																</div>
+
+																<div class="wanring-message-box hide" id="MonthlyRepaymentErrorMessage">
+																	<p class="tiny-small">Sorry, we're unable to consider a loan application based on
+																		the details entered.</p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="button-container mt-20 hidden-xs">
+												<a style="width: 200px;" href="#applyNow" class="ING-button blue" data-toggle="modal" aria-role="button">Apply now</a>
+
+												<!-- Get my rate & apply -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="content-module text-center">
+							<p><strong>Important:</strong> This result is an estimate only and is based on the information you have entered, and is not an offer of credit. Your actual rate and repayment amount may be different. Any application for credit is subject to ING's credit approval criteria, as well as minimum and maximum loan amounts.</p>
+						</div>
+					</div>
+
+
+					<div class="content-container border-box color-box light-blue">
+						<div class="content-module column-module no-margin-bottom">
+							<div class="table-row data hover-effect">
+								
+								<div class="table-cell button-side">
+									<div class="text-right">
+										<p>See how much your repayments could be with ING Personal Loan.</p>
+											<a href="https://www.ing.com.au/personal-loans/calculators/personal-loan-repayments-calculator-webview.html?pid=app:inbound:plcalcpage:repaymtoborrow" class="ING-button blue" data-toggle="modal" aria-role="button">Start now</a>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+
+		</section>
+
+		<footer class="ING-footer">
+			<article class="ING-share-block mobile-border-top">
+				
+			</article>
+
+			<article id="important-information" class="important-information">
+				<div class="container">
+					<div class="title-container">
+						<h5><span class="orange-info-icon"></span>Important Information</h5>
+					</div>
+					<div class="text-container">
+						<p class="disclaimer">Information and interest rates are current as at the date of publication and are subject to change. All applications for credit are subject to ING's credit approval criteria. Fees and charges apply. Redraw not available. Any advice on this website does not take into account your objectives, financial situation or needs and you should consider whether it is appropriate for you. Before making any decision in relation to an ING Personal Loan or Orange Everyday, you should read the <a href="/pdf/PersonalLoan/PersonalLoanTermsAndConditions.pdf" target="_blank" rel="noopener">Personal Loan Terms and Conditions</a> and <a href="/pdf/creditguide.pdf" target="_blank" rel="noopener">ING’s Credit Guide</a>, and the <a href="/pdf/Orange_Everyday_Terms_and_Conditions.pdf" target="_blank" rel="noopener">Orange Everyday Terms and Conditions</a> and the <a href="/pdf/Orange_Everyday_Fees_and_Limits_Schedule.pdf" target="_blank" rel="noopener">Orange Everyday Fees &amp; Limits Schedule</a>, available at ing.com.au. To view these documents you may need <a href="http://get.adobe.com/reader/" target="_blank" rel="noopener">Adobe Acrobat</a>. If you have a complaint, please call us on 133 464 at any time as we have procedures in place to help resolve any issues you may have. Products are issued by ING, a business name of ING Bank (Australia) Limited ABN 24 000 893 292, AFSL and Australian Credit Licence 229823.</p>
+
+						<p class="disclaimer" id="ComparisonWarning"><strong>Comparison rate</strong></p>
+						<p class="disclaimer">The comparison rate for the ING Personal Loan is based on an unsecured loan of $30,000 over a loan term of 5 years. <strong>WARNING:</strong> This comparison rate applies only to the example or examples given. Different amounts and terms will result in different comparison rates. Costs such as redraw fees or early repayment fees, and cost savings such as fee waivers, are not included in the comparison rate but may influence the cost of the loan.</p>
+
+						<p class="disclaimer"><strong>Calculator</strong></p>
+						<p class="disclaimer">Results from the ING Personal Loan Borrowing Power calculator do not constitute an application or offer of credit (and do not imply that credit is available). You can apply for an ING Personal Loan on our website.</p>
+					</div>
+				</div>
+			</article>
+
+			
+
+		
+
+			<article class="description">
+				<div class="container">
+					<p x-apple-data-detectors="false">ING is a business name of ING Bank (Australia) Limited ABN 24 000 893 292 AFSL 229823, Australian Credit Licence 229823.</p>
+					 
+				</div>
+			</article>
+		</footer>
+	</div>
+</div>
+
+<div class="modal fade" id="CompRate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-body">
+	
+			
+				
+					<p class="disclaimer">The comparison rate for the ING Personal Loan is based on an unsecured loan of $30,000 over a loan term of 5 years. <strong>WARNING:</strong> This comparison rate applies only to the example or examples given. Different amounts and terms will result in different comparison rates. Costs such as redraw fees or early repayment fees, and cost savings such as fee waivers, are not included in the comparison rate but may influence the cost of the loan.</p>
+	         
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="applyNow" tabindex="1" role="dialog">
+	<div class="modal-dialog applyFormVisitor">
+		<div class="ING-content modal-content applyFormModal" style="margin-bottom:200px!important">
+			<div class="modal-body applyFormContent">
+			<h1 class="formHeader" style="margin-top:-15px">Open an ING Personal Loan</h1>
+			<p style="margin-top:15px; margin-bottom:15px">You will need to:</p>
+			<div class="ING-content table-cell content-style check-list" style="padding:0px">
+																		<p style="text-align:left; margin-bottom:0px">Be aged 18+ and be able to provide us with your ID documents</p>
+																		<p style="text-align:left; margin-bottom:0px">Earn $36,000 or more a year (before tax) with PAYG payslips as your primary source of income</p>
+																	
+																		<p style="text-align:left; margin-bottom:0px">Be an Australian citizen, New Zealand citizen, or a permanent resident of Australia</p>
+			<p style="text-align:left; margin-bottom:0px">Maintain an Australian residential address</p>
+																
+																		</div>
+																		<p style="text-align:middle; margin:10px 10px 20px 10px">ING Personal Loans are not currently available to self-employed applicants but it’s coming soon!</p>
+																		
+			
+			<div id="customerSelection" style="display:block;">
+			
+			<div class="btn-group" ;=""><a class="ING-button blue applyFormButton-New" href="https://www.ing.com.au/securebanking/?join=ingpl&amp;customer=new" tabindex="2" title="New customer">New customer</a> <a class="ING-button blue applyFormButton-Ext" href="https://www.ing.com.au/securebanking/?join=ingpl&amp;customer=ext" tabindex="3" title="Existing customer">Existing customer</a>
+			
+			</div>
+			</div>
+			</div>
+			<div class="modal-close" data-dismiss="modal"></div>
+			</div>
+	</div>
+</div>
+
+
+<!-- ING js -->
+<ing-invite-joint-applicant-modal  id="jointApplicationInvitaModal"></ing-invite-joint-applicant-modal>
+
+<!-- ING js -->
+<script src="/js/jquery-plugins-1.4.0.min.js"></script>
+<script src="/js/angular-plugins-1.5.0.min.js"></script>
+<script src="/js/main-1.7.0.min.js"></script>
+<script src="/js/popup-links.min.js"></script>
+<script src="/js/app-1.2.js"></script>
+
+<script>
+$(function() {
+	$('body').on('click', '.popover-close', function() {
+		var popoverid = $(this).closest('.popover').attr('id');
+		$('[aria-describedby="'+popoverid+'"]').trigger('click');
+	});
+});
+</script>
+
+
+<script src="/js/InterestRateManager.js?mod=14072014"></script>
+
+<script src="/js/pl-interest-rates.js"></script>
+<script src="/js/pl-calculator-2.1b.js"></script>
+
+<script type="text/javascript">_satellite.pageBottom();</script>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 /*
  ** ING Personal Loan Calculators - Repayment
  ** Author: LASH
- ** Version 2.1 - 6.99 rate only
+ ** Version 2.1b - 6.99 rate only
  ** Last updated: 28 Feb 2022
  */
 
@@ -17,6 +17,7 @@ var repaymentLoanAmountErrorMessageObj = $("#RepaymentCalcLoanAmountError");
 
 // v2.1PROMO
 var _FIXEDRATE = 6.99;
+var _FIXEDRATE_COMP = 7.13;
 
 $(".dropdown").on("click", ".dropdown-option", function () {
   var selected = $(this).text();

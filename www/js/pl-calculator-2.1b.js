@@ -1,7 +1,7 @@
 /*
  ** ING Personal Loan Calculators - Borrowing Power
  ** Author: LASH
- ** Version 2.1 PROMO - 6.99 rate only
+ ** Version 2.1b - 6.99 rate only
  ** Last updated: 28 Feb 2022
  */
 
@@ -26,6 +26,7 @@ var plb_resultBoxFixedCompRate = $('#PLB-SelectedFixedComparisonRate');
 
 // v2.1PROMO
 var _FIXEDRATE = 6.99;
+var _FIXEDRATE_COMP = 7.13;
 
 // load HEM API
 var apiError = false;
@@ -57,6 +58,10 @@ $.ajax({
     // v1.4: check if the rate range data is loaded and loan rate dropdown is active
     var checkRate = setInterval(function () {
       var rateRange = true; // populateRateDropdown(); // v2.1PROMO
+
+
+      plb_resultBoxFixedRate.text(_FIXEDRATE);
+      plb_resultBoxFixedCompRate.text(_FIXEDRATE_COMP);
       
       if (!apiError && rateRange) {
         clearInterval(checkRate);     
@@ -378,8 +383,8 @@ function resetLoanTermDropdown(id, year) {
       var selectedRate = interestRates.rateRange[fixedRateIndex];
 
       if( selectedRate ) {
-        var rate = selectedRate.rate;
-        var comp = selectedRate.comp;
+        var rate = _FIXEDRATE; //selectedRate.rate;
+        var comp = _FIXEDRATE_COMP; //selectedRate.comp;
 
         fixedRate = rate;
         plb_resultBoxFixedRate.text(rate);
@@ -390,8 +395,8 @@ function resetLoanTermDropdown(id, year) {
       }
       else {
         fixedRate = undefined;
-        plb_resultBoxFixedRate.text('');
-        plb_resultBoxFixedCompRate.text('');
+        plb_resultBoxFixedRate.text(rate);
+        plb_resultBoxFixedCompRate.text(comp);
 
         $('#rating-comp-value').find('.rate').text('');
         $('#rating-comp-value').addClass('hide');

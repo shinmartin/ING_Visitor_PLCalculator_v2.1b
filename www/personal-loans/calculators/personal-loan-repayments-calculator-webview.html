@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Personal Loan Repayments Calculator - ING</title>
+	<meta name="description" content="Find out how much your repayments could be with ING Personal Loan. Try it now.">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta http-equiv="cleartype" content="on">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+	<meta name="keywords" content="products: Personal loans; categories: tools; keywords: Repayment Calculator" />
+
+	<!-- Open Graph data -->
+	<meta property="og:title" content="Personal Loan Repayments Calculator" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://www.ing.com.au/personal-loans/calculators/personal-loan-repayments-calculator.html" />
+	<meta property="og:image" content="http://www.ing.com.au/img/etc/social-icon.png" />
+	<meta property="og:description" content="Find out how much your repayments could be with ING Personal Loan. Try it now." />
+
+	<link rel="shortcut icon" href="/ico/favicon.png"/>
+	<!-- Shortcut icon for iOS -->
+	<link rel="apple-touch-icon" href="/ico/57.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/ico/72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/ico/114.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/ico/144.png">
+	<!-- Tile icon for Win8 (144x144 + tile color) -->
+	<meta name="msapplication-TileImage" content="/ico/144.png">
+	<meta name="msapplication-TileColor" content="#ff6600">
+
+	<script src="/js/webcomponents-lite.js"></script>
+	<link rel="import" href="/elements/ing-invite-joint-applicant/ing-invite-joint-applicant-modal.html">
+
+	<link rel="stylesheet" href="../../css/ING-style-2.5.min.css">
+	<link rel="stylesheet" href="../../css/ING-pl-calculator.min.css">
+	<link rel="stylesheet" href="../../css/ing-pl-repay-calc-style.css">
+
+	<style>
+	.important-information .disclaimer { margin-bottom: 20px; }
+	/* popover fix */
+	.popover.top .arrow {bottom:-10px;}.popover-question {font-size:13px; margin-right:5px;}.popover-content{font-size:12px;}.popover-close{font-size:12px;top:5px!important;right:5px;}.popover-warning {font-size:12px; text-decoration:underline; color:#525199;}.popover-warning:hover{color:#39396b;}
+	@media (max-width:767px){.popover{display:block!important;}}
+	</style>
+
+	<script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+	<script src="//assets.adobedtm.com/3e3d635ebccc/1e5125844228/launch-262ee225239e.min.js"></script>
+</head>
+
+
+<body ng-app="ING-App" class="side-faq-style">
+<!--[if lte IE 9]>
+<div class="oldie">
+	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+</div>
+<![endif]-->
+
+
+<div class="side-faq" ng-controller="SideFaqController" ng-init="init( 'Personal loans' );">
+	<div class="side-faq-header">
+		<div class="side-faq-container">
+			<div class="close-button" ng-click="closeSideFaq();">
+				<span class="icon-font icon-close"></span>
+			</div>
+			<div class="module-block">
+				<h5>How can we help?</h5>
+			</div>
+			<div class="module-block" style="position: relative;">
+				<input type="text" name="term" autocomplete="off" ng-model="searchInfo.selected" placeholder="Search item..." uib-typeahead="suggestion for suggestion in refreshSuggestionListEx($viewValue)" typeahead-loading="loadingLocations" class="search-control" typeahead-on-select="searchFaqList()">
+				<i class="typeahead-search-icon icon-font icon-search" ng-click="searchFaqListEx();"></i>
+			</div>
+		</div>
+	</div>
+
+
+	
+</div>
+<button class="side-faq-button" onclick="clickSideFaqButton();">
+	<div class="text-box">
+		<span class="normal active">Can we help?</span>
+		<span class="close">Close</span>
+	</div>
+</button>
+
+
+<div class="mobile-side-wrapper">
+	<div class="mobile-side-slider">
+	
+
+
+		<section class="ING-body">
+		
+
+		
+			<article class="ING-content no-gradient small-margin-top ">
+				<div class="container">
+					<div class="content-container main-title-box">
+						<h1>Personal loan repayments calculator</h1>
+						<p>Whether you need a personal loan for a holiday, home renovations, a car loan or simply to consolidate debt, it's wise to know what your monthly repayments will be. Have a play with our personal loan repayments calculator to find out the details.</p>
+					</div>
+					<div class="content-container bpc-container">
+						<div class="content-module block-center">
+							<div id="repayments-calc-new" class="repayments-calc content-container border-box">
+								<div class="content-module collapse-module white-style">
+									<div class="calc-section">
+										<p class="field-label">Loan amount <span>(Min $5,000, Max $60,000)</span></p>
+										<div id="amount-input" class="repay-input currency-validate">
+											<input type="button" value="-" class="button-minus change-value" data-field="amount/-1000">
+											<input type="text" value="$5,000" name="amount" class="amount-field currency-validate"
+												data-minmax="5000-60000">
+											<input type="button" value="+" class="button-plus change-value" data-field="amount/+1000">
+										</div>
+										<p class="error-message" id="amountError">
+											ING offers personal loans between $5,000 and $60,000
+										</p>
+										<p class="field-label">Loan term <span>(Min 2 years, Up to 7 years)</span></p>
+										<div id="term-input" class="repay-input term-validate">
+											<input type="button" value="-" class="button-minus change-value" data-field="term/-1">
+											<input type="text" value="2" name="term" class="term-field" data-minmax="2-5">
+											<input type="button" value="+" class="button-plus change-value" data-field="term/+1">
+										</div>
+										<p class="error-message" id="termError1">Oops, 6 and 7 year repayment terms are only available
+											for loans over $30,000.</p>
+										<p class="error-message" id="termError">Loan term should be between 2
+											and <span id="maxTerm"></span> years
+										</p>
+										<div class="rating-dropdown">
+												<p class="field-label with-icon">Fixed interest rate <span class="popover-question popover-style icon-instruction" style="color:#f60" data-container="body" data-placement="auto" data-toggle="popover" data-trigger="hover" data-content="<span class='popover-close'></span> The ING Personal Loan rate of 6.99% p.a. (comparison rate 7.13% p.a.) is available for all new applications that are received between 1 March 2022 and 31 March 2022. Applications can be cancelled at any time or expire. Any applications received after 31 March 2022 will be subject to the rates advertised at that time. This offer is not available for refinances of existing ING Personal Loans."></span></p>
+
+												<input type="text" value="6.99% p.a." class="form-field form-control currency-validate disabled" readonly disabled style="background-color:#eee" />
+
+												<p class="comp-rate-info">Comparison rate: 7.13% p.a. <span class="popover-question popover-style icon-instruction" data-container="body" data-placement="auto" data-toggle="popover" data-trigger="hover" data-content="<span class='popover-close'></span> The comparison rate for the ING Personal Loan is based on an unsecured loan of $30,000 over a loan term of 5 years. <strong>WARNING:</strong> This comparison rate applies only to the example or examples given. Different amounts and terms will result in different comparison rates. Costs such as redraw fees or early repayment fees, and cost savings such as fee waivers, are not included in the comparison rate but may influence the cost of the loan."></span></p>
+
+												<!--
+												<p class="field-label with-icon">Estimate your credit rating <img src="../../img/icon_info-grey.svg" alt="Info Icon" href="#creditScore" data-toggle="modal" /></p>
+
+												<div class="dropdown form-field">
+													<button id="rating"
+														class="btn btn-dropdown-orange btn-block dropdown-toggle symbol-right text-left "
+														data-toggle="dropdown">Please select</button>
+													<span class="button-symbol"><span class="caret"></span></span>
+													<ul id="rating-value" class="dropdown-menu" name="loan-rate" aria-labelledby="drop3">
+													</ul>
+												</div>
+
+												<p class="comp-rate-info hide" id="rating-comp-value" style="margin-top:4px;">
+													<span class="popover-question popover-style icon-instruction" data-container="body" data-placement="auto" data-toggle="popover" data-trigger="hover" data-content="<span class='popover-close'></span> The comparison rate for the ING Personal Loan is based on an unsecured loan of $30,000 over a loan term of 5 years. <strong>WARNING:</strong> This comparison rate applies only to the example or examples given. Different amounts and terms will result in different comparison rates. Costs such as redraw fees or early repayment fees, and cost savings such as fee waivers, are not included in the comparison rate but may influence the cost of the loan."></span>
+													Comparison rate: <span class="rate"></span>% p.a.
+												</p>
+												-->
+										</div>
+										<div class="frequency-dropdown">
+											<p class="field-label">Payment Frequency</p>
+											<div class="dropdown form-field">
+												<button id="frequency"
+													class="btn btn-dropdown-orange btn-block dropdown-toggle symbol-right text-left "
+													data-toggle="dropdown">Please select</button>
+												<span class="button-symbol"><span class="caret"></span></span>
+												<ul id="frequency-value" class="dropdown-menu" name="loan-term" aria-labelledby="drop4">
+													<li><a href="javascript:;" class="dropdown-option" data-value="12">Monthly</a></li>
+													<li><a href="javascript:;" class="dropdown-option" data-value="26">Fortnightly</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="estimate-section">
+										<h5>Estimated repayments</h5>
+										<p class="repayment">
+											<span class="symbol-dollar">&dollar;</span>
+											<!-- repayment value updated by JS based on CSS class(.repay-amount)-->
+											<span class="repay-amount">0</span>
+										</p>
+										<p>In the next step we will collect some personal details to check your
+											credit score and
+											give you your personalised rate.
+											From here you can decide if you want to continue with your application.</p>
+											<a href="#applyNow" class="apply-button ING-button blue" data-toggle="modal"
+												aria-role="button">Apply now</a>
+
+												<!-- Get my rate & apply -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="content-container border-box color-box light-blue">
+						<div class="content-module column-module no-margin-bottom">
+							<div class="table-row data hover-effect">
+								
+								<div class="table-cell button-side">
+										<div class="text-right">
+												<p>Work out how much you might be able to borrow.</p>
+													<a href="https://www.ing.com.au/personal-loans/calculators/personal-loan-borrowing-power-calculator-webview.html?pid=app:inbound:plcalcpage:borrowtorepaym" class="ING-button blue" data-toggle="modal" aria-role="button">Start now</a>
+												
+											</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+
+		<footer class="ING-footer">
+			<article class="ING-share-block mobile-border-top">
+				<div class="container">
+					<div class="share-container">
+						<ul class="share-list">
+							<li><a href="#" onclick="shareUrl('facebook');" title="Facebook"><span class="share-item facebook"></span></a></li>
+							<li><a href="#" onclick="shareUrl('twitter');" title="Twitter"><span class="share-item twitter"></span></a></li>
+							<li><a href="#" onclick="shareUrl('linkedin');" title="Linked In"><span class="share-item linkedin"></span></a></li>
+							<li><a href="#" onclick="shareUrl('googleplus');" title="Google+"><span class="share-item googleplus"></span></a></li>
+							<li><a href="#" onclick="shareEmail();" title="Email"><span class="share-item email"></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</article>
+
+			<article id="important-information" class="important-information">
+				<div class="container">
+					<div class="title-container">
+						<h5><span class="orange-info-icon"></span>Important Information</h5>
+					</div>
+					<div class="text-container">
+						<p class="disclaimer">Information and interest rates are current as at the date of publication and are subject to change. All applications for credit are subject to ING's credit approval criteria. Fees and charges apply. Redraw not available. Any advice on this website does not take into account your objectives, financial situation or needs and you should consider whether it is appropriate for you. Before making any decision in relation to an ING Personal Loan or Orange Everyday, you should read the <a href="https://www.ing.com.au/pdf/PersonalLoan/PersonalLoanTermsAndConditions.pdf" target="_blank">Personal Loan Terms and Conditions</a> and <a href="https://www.ing.com.au/pdf/creditguide.pdf" target="_blank">ING’s Credit Guide</a>, and the <a href="https://www.ing.com.au/pdf/Orange_Everyday_Terms_and_Conditions.pdf" target="_blank">Orange Everyday Terms and Conditions</a> and the <a href="https://www.ing.com.au/pdf/Orange_Everyday_Fees_and_Limits_Schedule.pdf" target="_blank">Orange Everyday Fees &amp; Limits Schedule</a>, available at ing.com.au. To view these documents you may need <a href="https://get.adobe.com/reader/" target="_blank">Adobe Acrobat</a>. If you have a complaint, please call us on 133 464 at any time as we have procedures in place to help resolve any issues you may have. Products are issued by ING, a business name of ING Bank (Australia) Limited ABN 24 000 893 292, AFSL and Australian Credit Licence 229823.</p>
+
+						<p class="disclaimer"><strong>Comparison rate</strong></p>
+						<p class="disclaimer">The comparison rate for the ING Personal Loan is based on an unsecured loan of $30,000 over a loan term of 5 years. <strong>WARNING:</strong> This comparison rate applies only to the example or examples given. Different amounts and terms will result in different comparison rates. Costs such as redraw fees or early repayment fees, and cost savings such as fee waivers, are not included in the comparison rate but may influence the cost of the loan.</p>
+
+						<p class="disclaimer"><strong>Calculators</strong></p>
+						<p class="disclaimer">Results from the ING Personal Loan Repayment Calculator do not constitute an application or offer of credit (and do not imply that credit is available). You can apply for an ING Personal Loan on our website.</p>
+						<p class="disclaimer">The Personal Loan Repayment Calculator gives an indication of the type of repayment required and the total interest payable, at the frequency requested, in respect of the loan parameters entered, namely amount, pay frequency, term and interest rate. The results are an approximate guide only and should not be used as exact values for financial planning purposes. The formulae used within this calculator may change at any time without notice. The following assumptions apply to the Personal Loan Repayment Calculator.</p>
+
+						<p class="disclaimer"><strong>Length of Month</strong></p>
+						<p class="disclaimer">All months are assumed to be of equal length. In reality, many loans accrue interest on a daily basis which means monthly interest charges may vary depending on the number of days in the particular month.</p>
+
+						<p class="disclaimer"><strong>Number of Weeks &amp; Fortnights in a Year</strong></p>
+						<p class="disclaimer">One year is assumed to contain exactly 52 weeks or 26 fortnights. This implicitly assumes that a year has 364 days rather than the actual 365 or 366.</p>
+
+						<p class="disclaimer"><strong>Rounding of Amount of Each Repayment</strong></p>
+						<p class="disclaimer">In practice, repayments are rounded to at least the nearer cent. However the calculator uses the unrounded repayment to derive the amount of interest payable at points along the graph and in total over the full term of the loan. This assumption allows for a smooth graph and equal repayment amounts.</p>
+
+						<p class="disclaimer"><strong>Interest Rate</strong></p>
+						<p class="disclaimer">The interest rate used in this calculation is the ING Personal Loan rate (a fixed interest rate) which may change at any time without notice.</p>
+					</div>
+				</div>
+			</article>
+
+
+
+			<article class="description">
+				<div class="container">
+					<p x-apple-data-detectors="false">ING is a business name of ING Bank (Australia) Limited ABN 24 000 893 292 AFSL 229823, Australian Credit Licence 229823.</p>
+					 
+				</div>
+			</article>
+		</footer>
+	</div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="CompRate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+				<div class="modal-body">
+	
+			
+				
+					<p class="disclaimer">The comparison rate for the ING Personal Loan is based on an unsecured loan of $30,000 over a loan term of 5 years. <strong>WARNING:</strong> This comparison rate applies only to the example or examples given. Different amounts and terms will result in different comparison rates. Costs such as redraw fees or early repayment fees, and cost savings such as fee waivers, are not included in the comparison rate but may influence the cost of the loan.</p>
+	         
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="applyNow" tabindex="1" role="dialog">
+	<div class="modal-dialog applyFormVisitor">
+		<div class="ING-content modal-content applyFormModal" style="margin-bottom:200px!important">
+			<div class="modal-body applyFormContent">
+			<h1 class="formHeader" style="margin-top:-15px">Open an ING Personal Loan</h1>
+			<p style="margin-top:15px; margin-bottom:15px">You will need to:</p>
+			<div class="ING-content table-cell content-style check-list" style="padding:0px">
+																		<p style="text-align:left; margin-bottom:0px">Be aged 18+ and be able to provide us with your ID documents</p>
+																		<p style="text-align:left; margin-bottom:0px">Earn $36,000 or more a year (before tax) with PAYG payslips as your primary source of income</p>
+																	
+																		<p style="text-align:left; margin-bottom:0px">Be an Australian citizen, New Zealand citizen, or a permanent resident of Australia</p>
+			<p style="text-align:left; margin-bottom:0px">Maintain an Australian residential address</p>
+																
+																		</div>
+																		<p style="text-align:middle; margin:10px 10px 20px 10px">ING Personal Loans are not currently available to self-employed applicants but it’s coming soon!</p>
+																		
+			
+			<div id="customerSelection" style="display:block;">
+			
+			<div class="btn-group" ;=""><a class="ING-button blue applyFormButton-New" href="https://www.ing.com.au/securebanking/?join=ingpl&amp;customer=new" tabindex="2" title="New customer">New customer</a> <a class="ING-button blue applyFormButton-Ext" href="https://www.ing.com.au/securebanking/?join=ingpl&amp;customer=ext" tabindex="3" title="Existing customer">Existing customer</a>
+			
+			</div>
+			</div>
+			</div>
+			<div class="modal-close" data-dismiss="modal"></div>
+			</div>
+	</div>
+</div>
+
+
+
+
+<!-- ING js -->
+<ing-invite-joint-applicant-modal  id="jointApplicationInvitaModal"></ing-invite-joint-applicant-modal>
+
+<!-- ING js -->
+<script src="/js/jquery-plugins-1.4.0.min.js"></script>
+<script src="/js/angular-plugins-1.5.0.min.js"></script>
+<script src="/js/main-1.7.0.min.js"></script>
+<script src="/js/popup-links.min.js"></script>
+<script src="/js/app-1.2.js"></script>
+
+<script>
+$(function() {
+	$('body').on('click', '.popover-close', function() {
+		var popoverid = $(this).closest('.popover').attr('id');
+		$('[aria-describedby="'+popoverid+'"]').trigger('click');
+	});
+});
+</script>
+
+
+<script src="/js/InterestRateManager.js?mod=14072014"></script>
+
+
+
+<script src="/js/pl-interest-rates.js"></script>
+<script src="/js/pl-visitor-repay-calculator-2.1b.js"></script>
+
+
+<script type="text/javascript">_satellite.pageBottom();</script>
+
+</body>
+</html>
